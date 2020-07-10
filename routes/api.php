@@ -30,5 +30,7 @@ Route::group([
     ], function() {
         Route::get('logout', 'AuthController@logout');
         Route::get('user', 'AuthController@user');
+        Route::post('registerbluetooth', 'AuthController@registerbluetooth');
+        Route::post('registerpush', 'AuthController@registerpush');
     });
 });

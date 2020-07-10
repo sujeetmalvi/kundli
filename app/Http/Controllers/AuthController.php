@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\User;
+use App\Userlogindetails;
+use Illuminate\Support\Facades\DB;
 class AuthController extends Controller
 {
     /**
@@ -33,6 +35,31 @@ class AuthController extends Controller
         ], 201);
     }
   
+    public function registerbluetooth(Request $request)
+    {
+        $bluetoothtoken = $request->bluetoothtoken;
+        $user_id = $request->user()->id;
+        $user = DB::table('users')
+                ->where('id', $user_id)
+                ->update(['bluetoothtoken' => $bluetoothtoken]);
+        if($user){
+            return response()->json(['message' => 'Successfully saved bluetooth token!'], 201);
+        }
+    }
+
+    public function registerpush(Request $request)
+    {
+        $pushtoken = $request->pushtoken;
+        $user_id = $request->user()->id;
+        $user = DB::table('users')
+                ->where('id', $user_id)
+                ->update(['pushtoken' => $pushtoken]);
+        if($user){
+            return response()->json(['message' => 'Successfully saved push token!'], 201);
+        }
+    }
+
+
     /**
      * Login user and create token
      *
@@ -55,6 +82,17 @@ class AuthController extends Controller
             return response()->json([
                 'message' => 'Unauthorized'
             ], 401);
+
+/*
+        $userlogindetails = new Userlogindetails([
+            'user_id' => $request->id,
+            'checkin' => Carbon::now()->->format('Y-m-d H:i:s'),
+            'checkout' => '0',
+            'created_at' => Carbon::now()->format('Y-m-d')
+        ]);
+        $userlogindetails->save();
+*/
+
         $user = $request->user();
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
