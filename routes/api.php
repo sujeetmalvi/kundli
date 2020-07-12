@@ -32,5 +32,7 @@ Route::group([
         Route::get('user', 'AuthController@user');
         Route::post('registerbluetooth', 'AuthController@registerbluetooth');
         Route::post('registerpush', 'AuthController@registerpush');
+        Route::post('usercheckinout', 'AuthController@usercheckinout');
+        Route::post('userslocations', 'AuthController@userslocations');
     });
 });
