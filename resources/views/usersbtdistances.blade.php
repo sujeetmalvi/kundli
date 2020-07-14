@@ -749,7 +749,7 @@
                   <tr>
                     <th>User Name</th>
                     <th>Bluetoothtoken</th>
-                    <th>Distance</th>
+                    <th>Distance(in Meter)</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -765,7 +765,7 @@
                   <tr>
                     <th>User Name</th>
                     <th>Bluetoothtoken</th>
-                    <th>Distance</th>
+                    <th>Distance(in Meter)</th>
                   </tr>
                   </tfoot>
                 </table>
