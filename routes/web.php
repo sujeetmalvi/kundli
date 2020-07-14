@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'UsersController@userslocations');
+Route::get('/userslocations', 'UsersController@userslocations');
+Route::get('/usersbtdistances', 'UsersController@usersbtdistances');
