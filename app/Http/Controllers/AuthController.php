@@ -21,12 +21,14 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|confirmed'
+            'password' => 'required|string|confirmed',
+            'bluetoothtoken' => 'required|string'
         ]);
         $user = new User([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
+            'bluetoothtoken'=> $request->bluetoothtoken
         ]);
         $user->save();
         return response()->json(['status'=>true,
@@ -37,15 +39,21 @@ class AuthController extends Controller
     public function registerbluetooth(Request $request)
     {
         $request->validate([
-            'bluetoothtoken' => 'required|string'
-        ]);
+            'bluetoothtoken' => 'required|string',
+            'distance' => 'required',
 
+        ]);
         $bluetoothtoken = $request->bluetoothtoken;
+        $distance = $request->distance;
         $user_id = $request->user()->id;
-        $user = DB::table('users')
-                ->where('id', $user_id)
-                ->update(['bluetoothtoken' => $bluetoothtoken]);
-        if($user){
+
+        $id = DB::table('usersbluetoothtoken')->insertGetId([
+                    'user_id' => $user_id,
+                    'bluetoothtoken' => $bluetoothtoken,
+                    'distance' => $distance,
+                    'created_at'=> now()
+                    ]);        
+        if($id){
             return response()->json(['status'=>true,'message' => 'Successfully saved bluetooth token!'], 201);
         }else{
             return response()->json(['status'=>false], 201);
@@ -211,5 +219,24 @@ class AuthController extends Controller
     public function user(Request $request)
     {
         return response()->json($request->user());
+    }
+    
+    
+    public function updatebluetoothtoken(Request $request)
+    {
+        $request->validate([
+            'bluetoothtoken' => 'required|string'
+        ]);
+
+        $bluetoothtoken = $request->bluetoothtoken;
+        $user_id = $request->user()->id;
+        $user = DB::table('users')
+                ->where('id', $user_id)
+                ->update(['bluetoothtoken' => $bluetoothtoken]);
+        if($user){
+            return response()->json(['status'=>true,'message' => 'Successfully updated bluetooth token!'], 201);
+        }else{
+            return response()->json(['status'=>false], 201);
+        }
     }
 }
