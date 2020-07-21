@@ -33,7 +33,7 @@ class AuthController extends Controller
         $user->save();
         return response()->json(['status'=>true,
             'message' => 'Successfully created user!'
-        ], 201);
+        ], 200);
     }
   
     public function registerbluetooth(Request $request)
@@ -54,9 +54,9 @@ class AuthController extends Controller
                     'created_at'=> now()
                     ]);        
         if($id){
-            return response()->json(['status'=>true,'message' => 'Successfully saved bluetooth token!'], 201);
+            return response()->json(['status'=>true,'message' => 'Successfully saved bluetooth token!'], 200);
         }else{
-            return response()->json(['status'=>false], 201);
+            return response()->json(['status'=>false], 200);
         }
     }
 
@@ -72,9 +72,9 @@ class AuthController extends Controller
                 ->where('id', $user_id)
                 ->update(['pushtoken' => $pushtoken]);
         if($user){
-            return response()->json(['status'=>true,'message' => 'Successfully saved push token!'], 201);
+            return response()->json(['status'=>true,'message' => 'Successfully saved push token!'], 200);
         }else{
-            return response()->json(['status'=>false], 201);
+            return response()->json(['status'=>false], 200);
         }
     }
 
@@ -104,7 +104,7 @@ class AuthController extends Controller
                     'checkinlong' => $request->checkinlong,
                     'created_at'=> now()
                     ]);
-            return response()->json(['status'=>true,'message' => 'Successfully checkin!'], 201);
+            return response()->json(['status'=>true,'message' => 'Successfully checkin!'], 200);
 
         }elseif($request->checktype=='checkout'){
 
@@ -124,10 +124,10 @@ class AuthController extends Controller
                         'checkoutlong' => $request->checkoutlong,
                         'updated_at'=> now()
                         ]);
-            return response()->json(['status'=>true,'message' => 'Successfully checkout!'], 201);
+            return response()->json(['status'=>true,'message' => 'Successfully checkout!'], 200);
 
         }        
-        return response()->json(['status'=>false,'message' => 'Check Type not found'], 201);
+        return response()->json(['status'=>false,'message' => 'Check Type not found'], 200);
     }
 
 
@@ -152,9 +152,9 @@ class AuthController extends Controller
                     'updated_at'=> now()
                     ]);
             if($id){
-                return response()->json(['status'=>true,'message' => 'Successfully saved location!'], 201);
+                return response()->json(['status'=>true,'message' => 'Successfully saved location!'], 200);
             }else{
-                return response()->json(['status'=>false,'message' => 'error'], 201);
+                return response()->json(['status'=>false,'message' => 'error'], 200);
             }
 
     }
@@ -234,9 +234,36 @@ class AuthController extends Controller
                 ->where('id', $user_id)
                 ->update(['bluetoothtoken' => $bluetoothtoken]);
         if($user){
-            return response()->json(['status'=>true,'message' => 'Successfully updated bluetooth token!'], 201);
+            return response()->json(['status'=>true,'message' => 'Successfully updated bluetooth token!'], 200);
         }else{
-            return response()->json(['status'=>false], 201);
+            return response()->json(['status'=>false], 200);
         }
     }
+
+public function usersservey(Request $request){
+            $request->validate([
+                'questionid' => 'required',
+                'answer'=>'required'
+            ]);
+
+            $user_id = $request->user()->id;
+
+            foreach ($request->questionid as $key => $qid) {
+                $id = DB::table('usersservey')->insertGetId([
+                        'user_id' => $user_id,
+                        'questionid' => $request->questionid[$key],
+                        'answer' => $request->answer[$key],
+                        'created_at'=> now(),
+                        'updated_at'=> now()
+                        ]);
+            }
+            if($id){
+                return response()->json(['status'=>true,'message' => 'Successfully saved location!'], 200);
+            }else{
+                return response()->json(['status'=>false,'message' => 'error'], 200);
+            }
+}
+
+
+
 }

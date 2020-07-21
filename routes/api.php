@@ -34,5 +34,7 @@ Route::group([
         Route::post('registerpush', 'AuthController@registerpush');
         Route::post('usercheckinout', 'AuthController@usercheckinout');
         Route::post('userslocations', 'AuthController@userslocations');
+        Route::post('usersservey', 'AuthController@usersservey');
+        
     });
 });
