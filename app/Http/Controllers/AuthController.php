@@ -51,7 +51,7 @@ class AuthController extends Controller
                     'user_id' => $user_id,
                     'bluetoothtoken' => $bluetoothtoken,
                     'distance' => $distance,
-                    'created_at'=> now()
+                    'created_at'=> now()->setTimezone('UTC')
                     ]);        
         if($id){
             return response()->json(['status'=>true,'message' => 'Successfully saved bluetooth token!'], 200);

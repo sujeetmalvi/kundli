@@ -748,24 +748,27 @@
                   <thead>
                   <tr>
                     <th>User Name</th>
-                    <th>Bluetoothtoken</th>
+                    <th>Near By Person</th>
                     <th>Distance(in Meter)</th>
+                    <th>Datetime</th>
                   </tr>
                   </thead>
                   <tbody>
                 @foreach($data as $d)
                   <tr>
                     <td>{{$d->name}}</td>
-                    <td>{{$d->bluetoothtoken}}</td>
+                    <td>{{$d->user2name}}</td>
                     <td>{{$d->distance}}</td>
+                    <td>{{$d->created_at}}</td>
                   </tr>
                 @endforeach
                   </tbody>
                   <tfoot>
                   <tr>
                     <th>User Name</th>
-                    <th>Bluetoothtoken</th>
+                    <th>Near By Person</th>
                     <th>Distance(in Meter)</th>
+                    <th>Datetime</th>
                   </tr>
                   </tfoot>
                 </table>
