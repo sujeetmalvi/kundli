@@ -20,7 +20,7 @@ class UsersController extends Controller
     public function usersbtdistances(Request $request){
         $data = DB::table('usersbluetoothtoken')
                 ->leftjoin('users','users.id','=','usersbluetoothtoken.user_id')
-                ->leftjoin('users as user2','user2.bluetoothtoken','=','usersbluetoothtoken.bluetoothtoken')
+                ->leftjoin('users as user2','user2.id','=','usersbluetoothtoken.bluetoothtoken')
                 ->where('usersbluetoothtoken.distance','<=',2)
                 ->select('usersbluetoothtoken.bluetoothtoken',
                     'usersbluetoothtoken.distance','users.name','user2.name as user2name','usersbluetoothtoken.created_at')

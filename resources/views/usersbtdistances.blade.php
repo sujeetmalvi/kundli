@@ -336,6 +336,7 @@
       "autoWidth": false,
       "paging": true,
       "ordering": true,
+      "order": [[ 3, "desc" ]],
     });
   });
 </script>
