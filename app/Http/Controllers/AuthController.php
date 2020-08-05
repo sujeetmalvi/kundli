@@ -5,8 +5,56 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\User;
 use Illuminate\Support\Facades\DB;
+//use Benwilkins\FCM\FcmMessage;
 class AuthController extends Controller
 {
+
+function sendNotification(Request $request)
+{
+    $token = [];
+    $token = DB::table('users')->where('device_token','!=','')->get()->pluck('device_token');
+
+    $url = 'https://fcm.googleapis.com/fcm/send';
+    foreach ($token as $tok) {
+        $fields = array(
+            'to' => $tok,
+            'data' => $message = array(
+                "message" => "Flair - Testing",
+                "dialog_id" => '1',
+                "content_added"=>'0'
+            )
+        );
+        $headers = array(
+            'Authorization: key=AAAAqrSVdvg:APA91bFdhL80bQBoIARIO7usIgQpN_N-koHg5VWLQsqFc3owjQkKKfdrrQk8Rcpq64AnJLmgb8I8OEVc6buszb1atoDztsheFzXsTUDVXeb5iM52Q8LnUR9RxGuOFu7vE0pgKLIrSOXs',
+            'Content-type: Application/json'
+        );
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
+        curl_exec($ch);
+        curl_close($ch);
+    }
+
+    $res = ['error' => null, 'result' => "Notification sent"];
+
+    return $res;
+}
+
+
+// public function toFcm(Request $request) 
+// {
+
+//  $request->user->notify();
+
+// }
+
+
+   
     /**
      * Create user
      *
@@ -22,13 +70,16 @@ class AuthController extends Controller
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string|confirmed',
-            'bluetoothtoken' => 'required|string'
+            'bluetoothtoken' => 'required|string',
+
+
         ]);
         $user = new User([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'bluetoothtoken'=> $request->bluetoothtoken
+            'bluetoothtoken'=> $request->bluetoothtoken,
+            'device_token'=> $request->device_token,
         ]);
         $user->save();
         return response()->json(['status'=>true,
@@ -265,6 +316,24 @@ public function usersservey(Request $request){
             }
 }
 
+
+    public function updatedevicetoken(Request $request)
+    {
+        $request->validate([
+            'device_token' => 'required|string'
+        ]);
+
+        $device_token = $request->device_token;
+        $user_id = $request->user()->id;
+        $user = DB::table('users')
+                ->where('id', $user_id)
+                ->update(['device_token' => $device_token]);
+        if($user){
+            return response()->json(['status'=>true,'message' => 'Successfully updated device token!'], 200);
+        }else{
+            return response()->json(['status'=>false], 200);
+        }
+    }
 
 
 }

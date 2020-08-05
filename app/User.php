@@ -37,4 +37,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // public function routeNotificationForFcm($notification)
+    // {
+    //     return $this->device_token;
+    // }
 }

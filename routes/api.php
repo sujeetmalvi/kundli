@@ -35,6 +35,8 @@ Route::group([
         Route::post('usercheckinout', 'AuthController@usercheckinout');
         Route::post('userslocations', 'AuthController@userslocations');
         Route::post('usersservey', 'AuthController@usersservey');
-        
+        Route::post('updatedevicetoken', 'AuthController@updatedevicetoken');
+        Route::post('updatebluetoothtoken', 'AuthController@updatebluetoothtoken');        
+        Route::post('sendNotification', 'AuthController@sendNotification');        
     });
 });
