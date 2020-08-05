@@ -24,7 +24,8 @@ Route::group([
 ], function () {
     Route::post('login', 'AuthController@login');
     Route::post('signup', 'AuthController@signup');
-  
+    Route::get('sendNotification', 'AuthController@sendNotification');
+
     Route::group([
       'middleware' => 'auth:api'
     ], function() {
@@ -36,7 +37,7 @@ Route::group([
         Route::post('userslocations', 'AuthController@userslocations');
         Route::post('usersservey', 'AuthController@usersservey');
         Route::post('updatedevicetoken', 'AuthController@updatedevicetoken');
-        Route::post('updatebluetoothtoken', 'AuthController@updatebluetoothtoken');        
-        Route::post('sendNotification', 'AuthController@sendNotification');        
+        Route::post('updatebluetoothtoken', 'AuthController@updatebluetoothtoken');                  
     });
+
 });

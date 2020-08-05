@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class AuthController extends Controller
 {
 
-function sendNotification(Request $request)
+function sendNotification()
 {
     $token = [];
     $token = DB::table('users')->where('device_token','!=','')->get()->pluck('device_token');
