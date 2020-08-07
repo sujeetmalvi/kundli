@@ -11,18 +11,19 @@ class AuthController extends Controller
 
 function sendNotification()
 {
-    $token = [];
-    $token = DB::table('users')->where('device_token','!=','')->get()->pluck('device_token');
+    //$token = [];
+    //$token = DB::table('users')->where('device_token','!=','')->get()->pluck('device_token');
 
     $url = 'https://fcm.googleapis.com/fcm/send';
-    foreach ($token as $tok) {
+    //foreach ($token as $tok) {
         $fields = array(
-            'to' => $tok,
+            //'to' => $tok, // for device token user token else use topic name 
+            'to' => "/topics/bluetooth", //           
             'data' => $message = array(
                 "message" => "Flair - Testing",
                 "dialog_id" => '1',
                 "content_added"=>'0'
-            )
+                )
         );
         $headers = array(
             'Authorization: key=AAAAqrSVdvg:APA91bFdhL80bQBoIARIO7usIgQpN_N-koHg5VWLQsqFc3owjQkKKfdrrQk8Rcpq64AnJLmgb8I8OEVc6buszb1atoDztsheFzXsTUDVXeb5iM52Q8LnUR9RxGuOFu7vE0pgKLIrSOXs',
@@ -38,7 +39,7 @@ function sendNotification()
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
         curl_exec($ch);
         curl_close($ch);
-    }
+    //}
 
     $res = ['error' => null, 'result' => "Notification sent"];
 
