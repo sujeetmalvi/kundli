@@ -154,7 +154,7 @@ function sendNotification()
                     'checkindatetime' => $request->checkindatetime,
                     'checkinlat' => $request->checkinlat,
                     'checkinlong' => $request->checkinlong,
-                    'created_at'=> now()
+                    'created_at'=> now()->setTimezone('UTC')
                     ]);
             return response()->json(['status'=>true,'message' => 'Successfully checkin!'], 200);
 
@@ -174,7 +174,7 @@ function sendNotification()
                         'checkoutdatetime' => $request->checkoutdatetime,
                         'checkoutlat' => $request->checkoutlat,
                         'checkoutlong' => $request->checkoutlong,
-                        'updated_at'=> now()
+                        'updated_at'=> now()->setTimezone('UTC')
                         ]);
             return response()->json(['status'=>true,'message' => 'Successfully checkout!'], 200);
 
@@ -200,8 +200,8 @@ function sendNotification()
                     'locationdatetime' => $request->locationdatetime,
                     'locationlat' => $request->locationlat,
                     'locationlong' => $request->locationlong,
-                    'created_at'=> now(),
-                    'updated_at'=> now()
+                    'created_at'=> now()->setTimezone('UTC'),
+                    'updated_at'=>now()->setTimezone('UTC')
                     ]);
             if($id){
                 return response()->json(['status'=>true,'message' => 'Successfully saved location!'], 200);
@@ -306,8 +306,8 @@ public function usersservey(Request $request){
                         'user_id' => $user_id,
                         'questionid' => $request->questionid[$key],
                         'answer' => $request->answer[$key],
-                        'created_at'=> now(),
-                        'updated_at'=> now()
+                        'created_at'=> now()->setTimezone('UTC'),
+                        'updated_at'=> now()->setTimezone('UTC')
                         ]);
             }
             if($id){
@@ -343,7 +343,7 @@ public function usersservey(Request $request){
 
         $user = DB::table('users')
                 ->where('id', $user_id)
-                ->update(['infected_reportedon' => now()]);
+                ->update(['infected_reportedon' => now()->setTimezone('UTC')]);
         if($user){
             return response()->json(['status'=>true,'message' => 'Successfully reported !'], 200);
         }else{
