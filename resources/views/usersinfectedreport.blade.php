@@ -5,7 +5,7 @@
 <div class="wrapper">
 
   <!-- Navbar -->
-   @include('topmenubar');
+  @include('topmenubar');
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
@@ -18,7 +18,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>User Distances</h1>
+            <h1>User Infected On</h1>
           </div>
           <div class="col-sm-6">
           </div>
@@ -41,8 +41,6 @@
                   <thead>
                   <tr>
                     <th>User Name</th>
-                    <th>Near By Person</th>
-                    <th>Distance(in Meter)</th>
                     <th>Datetime</th>
                   </tr>
                   </thead>
@@ -50,17 +48,15 @@
                 @foreach($data as $d)
                   <tr>
                     <td>{{$d->name}}</td>
-                    <td>{{$d->user2name}}</td>
-                    <td>{{$d->distance}}</td>
-                    <td>{{$d->created_at}}</td>
+                    <td>{{$d->infected_reportedon}}</td>
                   </tr>
                 @endforeach
                   </tbody>
                   <!--<tfoot>
                   <tr>
                     <th>User Name</th>
-                    <th>Near By Person</th>
-                    <th>Distance(in Meter)</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
                     <th>Datetime</th>
                   </tr>
                   </tfoot>-->

@@ -29,5 +29,14 @@ class UsersController extends Controller
         return view('usersbtdistances', ['data'=>$data]);
     }
 
+    public function usersinfectedreport(Request $request){
+        $data = DB::table('users')
+                ->where('infected_reportedon','!=','')
+                ->select('name','infected_reportedon')
+                ->orderBy('infected_reportedon', 'DESC')
+                ->get();
+        return view('usersinfectedreport', ['data'=>$data]);
+    }
+
 
 }

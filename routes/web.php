@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'UsersController@userslocations');
 Route::get('/userslocations', 'UsersController@userslocations');
 Route::get('/usersbtdistances', 'UsersController@usersbtdistances');
+Route::get('/usersinfectedreport', 'UsersController@usersinfectedreport');

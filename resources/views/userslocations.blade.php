@@ -21,10 +21,6 @@
             <h1>User Locations</h1>
           </div>
           <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item active">Locations</li>
-              <li class="breadcrumb-item"><a href="/usersbtdistances">Distances</a></li>
-            </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->

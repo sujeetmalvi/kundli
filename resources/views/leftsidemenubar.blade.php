@@ -35,6 +35,12 @@
               Distances
             </a>
           </li>
+          <li class="nav-item">
+            <a href="/usersinfectedreport" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              Infected Users
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
