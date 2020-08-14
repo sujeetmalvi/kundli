@@ -337,4 +337,19 @@ public function usersservey(Request $request){
     }
 
 
-}
+    public function reportasinfected(Request $request)
+    {
+        $user_id = $request->user()->id;
+
+        $user = DB::table('users')
+                ->where('id', $user_id)
+                ->update(['infected_reportedon' => now()]);
+        if($user){
+            return response()->json(['status'=>true,'message' => 'Successfully reported !'], 200);
+        }else{
+            return response()->json(['status'=>false], 200);
+        }
+    }
+
+
+}// class ends here
