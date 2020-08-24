@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html>
 @include('headsection');
-<body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
-
-  <!-- Navbar -->
-  @include('topmenubar');
-  <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
-  @include('leftsidemenubar');
-
   <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -79,17 +67,15 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  @include('footersection');
-<script>
+  <script>
   $(function () {
     $("#example2").DataTable({
       "responsive": true,
       "autoWidth": false,
       "paging": true,
       "ordering": true,
-      "order": [[ 3, "desc" ]],
+      "order": [[ 0, "desc" ]],
     });
   });
 </script>
-</body>
-</html>
+  @include('footersection');

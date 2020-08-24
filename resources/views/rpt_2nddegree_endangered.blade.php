@@ -6,7 +6,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>User Infected On</h1>
+            <h1>2nd Degree Endangered</h1>
           </div>
           <div class="col-sm-6">
           </div>
@@ -28,23 +28,25 @@
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                    <th>User Name</th>
+                    <th>Near By Person</th>
+                    <th>Distance(in Meter)</th>
                     <th>Datetime</th>
                   </tr>
                   </thead>
                   <tbody>
                 @foreach($data as $d)
                   <tr>
-                    <td>{{$d->name}}</td>
-                    <td>{{date('d-M-Y',strtotime($d->infected_reportedon))}}</td>
+                    <td>{{$d->user2name}}</td>
+                    <td>{{$d->distance}}</td>
+                    <td>{{$d->created_at}}</td>
                   </tr>
                 @endforeach
                   </tbody>
                   <!--<tfoot>
                   <tr>
                     <th>User Name</th>
-                    <th>Latitude</th>
-                    <th>Longitude</th>
+                    <th>Near By Person</th>
+                    <th>Distance(in Meter)</th>
                     <th>Datetime</th>
                   </tr>
                   </tfoot>-->
@@ -70,7 +72,7 @@
       "autoWidth": false,
       "paging": true,
       "ordering": true,
-      "order": [[ 1, "desc" ]],
+     // "order": [[ 3, "desc" ]],
     });
   });
 </script>

@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\DB;
 class UsersController extends Controller
 {
 
+    public function login(){
+        return view('login');
+    }
+
+    public function dashboard(){
+        return view('dashboard');
+    }
     public function userslocations(Request $request){
         $data = DB::table('userslocations')
                 ->leftjoin('users','users.id','=','userslocations.user_id')

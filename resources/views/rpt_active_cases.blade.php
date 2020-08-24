@@ -6,7 +6,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>User Infected On</h1>
+            <h1>Active Cases</h1>
           </div>
           <div class="col-sm-6">
           </div>
@@ -29,6 +29,8 @@
                   <thead>
                   <tr>
                     <th>User Name</th>
+                    <th>1st Level Report</th>
+                    <th>2nd Level Report</th>
                     <th>Datetime</th>
                   </tr>
                   </thead>
@@ -36,18 +38,20 @@
                 @foreach($data as $d)
                   <tr>
                     <td>{{$d->name}}</td>
+                    <td><a href='/rpt_1stdegree_endangered/{{$d->id}}' target="_blank">Click here</a></td>
+                    <td><a href='/rpt_2nddegree_endangered/{{$d->id}}' target="_blank">Click here</a></td>
                     <td>{{date('d-M-Y',strtotime($d->infected_reportedon))}}</td>
                   </tr>
                 @endforeach
                   </tbody>
-                  <!--<tfoot>
-                  <tr>
+                  <tfoot>
+                  <!-- <tr>
                     <th>User Name</th>
                     <th>Latitude</th>
                     <th>Longitude</th>
                     <th>Datetime</th>
-                  </tr>
-                  </tfoot>-->
+                  </tr> -->
+                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->
@@ -63,15 +67,4 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <script>
-  $(function () {
-    $("#example2").DataTable({
-      "responsive": true,
-      "autoWidth": false,
-      "paging": true,
-      "ordering": true,
-      "order": [[ 1, "desc" ]],
-    });
-  });
-</script>
   @include('footersection');
