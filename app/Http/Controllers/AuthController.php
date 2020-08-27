@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\User;
 use Illuminate\Support\Facades\DB;
-//use Benwilkins\FCM\FcmMessage;
+
 class AuthController extends Controller
 {
 
@@ -45,16 +45,6 @@ class AuthController extends Controller
 
         return $res;
     }
-
-
-// public function toFcm(Request $request) 
-// {
-
-//  $request->user->notify();
-
-// }
-
-
 
     /**
      * Create user
