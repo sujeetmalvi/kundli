@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\DB;
 class AuthController extends Controller
 {
 
-function sendNotification()
-{
+    function sendNotification()
+    {
     //$token = [];
     //$token = DB::table('users')->where('device_token','!=','')->get()->pluck('device_token');
 
-    $url = 'https://fcm.googleapis.com/fcm/send';
+        $url = 'https://fcm.googleapis.com/fcm/send';
     //foreach ($token as $tok) {
         $fields = array(
             //'to' => $tok, // for device token user token else use topic name 
@@ -23,7 +23,7 @@ function sendNotification()
                 "message" => "Flair - Testing",
                 "dialog_id" => '1',
                 "content_added"=>'0'
-                )
+            )
         );
         $headers = array(
             'Authorization: key=AAAAqrSVdvg:APA91bFdhL80bQBoIARIO7usIgQpN_N-koHg5VWLQsqFc3owjQkKKfdrrQk8Rcpq64AnJLmgb8I8OEVc6buszb1atoDztsheFzXsTUDVXeb5iM52Q8LnUR9RxGuOFu7vE0pgKLIrSOXs',
@@ -41,10 +41,10 @@ function sendNotification()
         curl_close($ch);
     //}
 
-    $res = ['error' => null, 'result' => "Notification sent"];
+        $res = ['error' => null, 'result' => "Notification sent"];
 
-    return $res;
-}
+        return $res;
+    }
 
 
 // public function toFcm(Request $request) 
@@ -55,7 +55,7 @@ function sendNotification()
 // }
 
 
-   
+
     /**
      * Create user
      *
@@ -87,7 +87,7 @@ function sendNotification()
             'message' => 'Successfully created user!'
         ], 200);
     }
-  
+
     public function registerbluetooth(Request $request)
     {
         $request->validate([
@@ -100,11 +100,11 @@ function sendNotification()
         $user_id = $request->user()->id;
 
         $id = DB::table('usersbluetoothtoken')->insertGetId([
-                    'user_id' => $user_id,
-                    'bluetoothtoken' => $bluetoothtoken,
-                    'distance' => $distance,
-                    'created_at'=> now()->setTimezone('UTC')
-                    ]);        
+            'user_id' => $user_id,
+            'bluetoothtoken' => $bluetoothtoken,
+            'distance' => $distance,
+            'created_at'=> now()->setTimezone('UTC')
+        ]);        
         if($id){
             return response()->json(['status'=>true,'message' => 'Successfully saved bluetooth token!'], 200);
         }else{
@@ -121,8 +121,8 @@ function sendNotification()
         $pushtoken = $request->pushtoken;
         $user_id = $request->user()->id;
         $user = DB::table('users')
-                ->where('id', $user_id)
-                ->update(['pushtoken' => $pushtoken]);
+        ->where('id', $user_id)
+        ->update(['pushtoken' => $pushtoken]);
         if($user){
             return response()->json(['status'=>true,'message' => 'Successfully saved push token!'], 200);
         }else{
@@ -149,13 +149,13 @@ function sendNotification()
             ]);
 
             $id = DB::table('userscheckinout')->insertGetId([
-                    'user_id' => $user_id,
-                    'record_date' => $request->record_date,
-                    'checkindatetime' => $request->checkindatetime,
-                    'checkinlat' => $request->checkinlat,
-                    'checkinlong' => $request->checkinlong,
-                    'created_at'=> now()->setTimezone('UTC')
-                    ]);
+                'user_id' => $user_id,
+                'record_date' => $request->record_date,
+                'checkindatetime' => $request->checkindatetime,
+                'checkinlat' => $request->checkinlat,
+                'checkinlong' => $request->checkinlong,
+                'created_at'=> now()->setTimezone('UTC')
+            ]);
             return response()->json(['status'=>true,'message' => 'Successfully checkin!'], 200);
 
         }elseif($request->checktype=='checkout'){
@@ -168,14 +168,14 @@ function sendNotification()
             ]);
 
             $affected = DB::table('userscheckinout')
-                      ->where('user_id',$user_id)
-                      ->where('record_date',$request->record_date)
-                      ->update([
-                        'checkoutdatetime' => $request->checkoutdatetime,
-                        'checkoutlat' => $request->checkoutlat,
-                        'checkoutlong' => $request->checkoutlong,
-                        'updated_at'=> now()->setTimezone('UTC')
-                        ]);
+            ->where('user_id',$user_id)
+            ->where('record_date',$request->record_date)
+            ->update([
+                'checkoutdatetime' => $request->checkoutdatetime,
+                'checkoutlat' => $request->checkoutlat,
+                'checkoutlong' => $request->checkoutlong,
+                'updated_at'=> now()->setTimezone('UTC')
+            ]);
             return response()->json(['status'=>true,'message' => 'Successfully checkout!'], 200);
 
         }        
@@ -187,27 +187,27 @@ function sendNotification()
     public function userslocations(Request $request)
     {
 
-            $request->validate([
-                'locationdatetime' => 'required',
-                'locationlat'=>'required',
-                'locationlong'=>'required'
-            ]);
+        $request->validate([
+            'locationdatetime' => 'required',
+            'locationlat'=>'required',
+            'locationlong'=>'required'
+        ]);
 
-            $user_id = $request->user()->id;
+        $user_id = $request->user()->id;
 
-            $id = DB::table('userslocations')->insertGetId([
-                    'user_id' => $user_id,
-                    'locationdatetime' => $request->locationdatetime,
-                    'locationlat' => $request->locationlat,
-                    'locationlong' => $request->locationlong,
-                    'created_at'=> now()->setTimezone('UTC'),
-                    'updated_at'=>now()->setTimezone('UTC')
-                    ]);
-            if($id){
-                return response()->json(['status'=>true,'message' => 'Successfully saved location!'], 200);
-            }else{
-                return response()->json(['status'=>false,'message' => 'error'], 200);
-            }
+        $id = DB::table('userslocations')->insertGetId([
+            'user_id' => $user_id,
+            'locationdatetime' => $request->locationdatetime,
+            'locationlat' => $request->locationlat,
+            'locationlong' => $request->locationlong,
+            'created_at'=> now()->setTimezone('UTC'),
+            'updated_at'=>now()->setTimezone('UTC')
+        ]);
+        if($id){
+            return response()->json(['status'=>true,'message' => 'Successfully saved location!'], 200);
+        }else{
+            return response()->json(['status'=>false,'message' => 'error'], 200);
+        }
 
     }
 
@@ -242,15 +242,15 @@ function sendNotification()
             $token->expires_at = Carbon::now()->addWeeks(1);
         $token->save();
         return response()->json(['status'=>true,
-                'access_token' => $tokenResult->accessToken,
-                'token_type' => 'Bearer',
-                'id'=> $user->id,
-                'expires_at' => Carbon::parse(
+            'access_token' => $tokenResult->accessToken,
+            'token_type' => 'Bearer',
+            'id'=> $user->id,
+            'expires_at' => Carbon::parse(
                 $tokenResult->token->expires_at
             )->toDateTimeString()
         ]);
     }
-  
+
     /**
      * Logout user (Revoke the token)
      *
@@ -263,7 +263,7 @@ function sendNotification()
             'message' => 'Successfully logged out'
         ]);
     }
-  
+
     /**
      * Get the authenticated User
      *
@@ -284,8 +284,8 @@ function sendNotification()
         $bluetoothtoken = $request->bluetoothtoken;
         $user_id = $request->user()->id;
         $user = DB::table('users')
-                ->where('id', $user_id)
-                ->update(['bluetoothtoken' => $bluetoothtoken]);
+        ->where('id', $user_id)
+        ->update(['bluetoothtoken' => $bluetoothtoken]);
         if($user){
             return response()->json(['status'=>true,'message' => 'Successfully updated bluetooth token!'], 200);
         }else{
@@ -293,29 +293,29 @@ function sendNotification()
         }
     }
 
-public function usersservey(Request $request){
-            $request->validate([
-                'questionid' => 'required',
-                'answer'=>'required'
+    public function usersservey(Request $request){
+        $request->validate([
+            'questionid' => 'required',
+            'answer'=>'required'
+        ]);
+
+        $user_id = $request->user()->id;
+
+        foreach ($request->questionid as $key => $qid) {
+            $id = DB::table('usersservey')->insertGetId([
+                'user_id' => $user_id,
+                'questionid' => $request->questionid[$key],
+                'answer' => $request->answer[$key],
+                'created_at'=> now()->setTimezone('UTC'),
+                'updated_at'=> now()->setTimezone('UTC')
             ]);
-
-            $user_id = $request->user()->id;
-
-            foreach ($request->questionid as $key => $qid) {
-                $id = DB::table('usersservey')->insertGetId([
-                        'user_id' => $user_id,
-                        'questionid' => $request->questionid[$key],
-                        'answer' => $request->answer[$key],
-                        'created_at'=> now()->setTimezone('UTC'),
-                        'updated_at'=> now()->setTimezone('UTC')
-                        ]);
-            }
-            if($id){
-                return response()->json(['status'=>true,'message' => 'Successfully saved location!'], 200);
-            }else{
-                return response()->json(['status'=>false,'message' => 'error'], 200);
-            }
-}
+        }
+        if($id){
+            return response()->json(['status'=>true,'message' => 'Successfully saved location!'], 200);
+        }else{
+            return response()->json(['status'=>false,'message' => 'error'], 200);
+        }
+    }
 
 
     public function updatedevicetoken(Request $request)
@@ -327,8 +327,8 @@ public function usersservey(Request $request){
         $device_token = $request->device_token;
         $user_id = $request->user()->id;
         $user = DB::table('users')
-                ->where('id', $user_id)
-                ->update(['device_token' => $device_token]);
+        ->where('id', $user_id)
+        ->update(['device_token' => $device_token]);
         if($user){
             return response()->json(['status'=>true,'message' => 'Successfully updated device token!'], 200);
         }else{
@@ -337,19 +337,47 @@ public function usersservey(Request $request){
     }
 
 
+    //remove after new release 
     public function reportasinfected(Request $request)
     {
         $user_id = $request->user()->id;
 
         $user = DB::table('users')
-                ->where('id', $user_id)
-                ->update(['infected_reportedon' => now()->setTimezone('UTC')]);
+        ->where('id', $user_id)
+        ->update(['infected_reportedon' => now()->setTimezone('UTC')]);
         if($user){
             return response()->json(['status'=>true,'message' => 'Successfully reported !'], 200);
         }else{
             return response()->json(['status'=>false], 200);
         }
     }
+
+
+    // 1=Infected,2=Symptoms,3=Well,4=Not Infected
+    public function reporthealth(Request $request)
+    {
+        $request->validate([
+            'condition_type' => 'required'
+        ]);
+
+        $user_id = $request->user()->id;
+        $condition_type = $request->condition_type;
+
+        $id = DB::table('usershealth')->insertGetId([
+            'user_id' => $user_id,
+            'condition_type' => $request->condition_type,
+            'created_at'=> now()->setTimezone('UTC'),
+            'updated_at'=>now()->setTimezone('UTC')
+        ]);
+        if($id){
+            return response()->json(['status'=>true,'message' => 'Successfully saved Users Health!'], 200);
+        }else{
+            return response()->json(['status'=>false,'message' => 'error'], 200);
+        }
+    }
+
+
+
 
 
 }// class ends here

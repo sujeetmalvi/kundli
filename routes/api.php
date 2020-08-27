@@ -38,7 +38,8 @@ Route::group([
         Route::post('usersservey', 'AuthController@usersservey');
         Route::post('updatedevicetoken', 'AuthController@updatedevicetoken');
         Route::post('updatebluetoothtoken', 'AuthController@updatebluetoothtoken');
-        Route::post('reportasinfected', 'AuthController@reportasinfected');                          
+        Route::post('reportasinfected', 'AuthController@reportasinfected');
+        Route::post('reporthealth', 'AuthController@reporthealth');
     });
 
 });
