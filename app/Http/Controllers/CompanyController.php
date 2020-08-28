@@ -18,25 +18,19 @@ class CompanyController extends Controller
         return view('company',['data'=>$data]);
     }
 
-    // public function create_user(Request $request){
+    public function create_company(Request $request){
 
-    //     $name = $request->name;
-    //     $email = $request->email;
-    //     $password = $request->password;
-    //     $company_id = $request->company_id;
+        $company_name = $request->company_name;        
 
-    //     $id = User::insertGetId([
-    //         'name' => $name,
-    //         'email' => $email,
-    //         'password' => bcrypt($password),
-    //         'company_id' => $company_id,
-    //         'created_at'=> now()->setTimezone('UTC')
-    //     ]);        
-    //     if($id){
-    //         return response()->json(['status'=>true,'message' => 'New User Created Successfully']);
-    //     }else{
-    //         return response()->json(['status'=>false,'message' => 'Error']);
-    //     }
-    // }
+        $id = Company::insertGetId([
+            'company_name' => $company_name,
+            'created_at'=> now()->setTimezone('UTC')
+        ]);        
+        if($id){
+            return response()->json(['status'=>true,'message' => 'New Company Created Successfully']);
+        }else{
+            return response()->json(['status'=>false,'message' => 'Error']);
+        }
+    }
 
 }

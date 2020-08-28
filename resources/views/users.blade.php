@@ -198,6 +198,7 @@
   });
 
   $("#showlist").click(function() {
+    window.location.reload();
     $('#new').slideUp(500);
     $("#edit").slideUp(500);
     $('#list').slideDown(500);

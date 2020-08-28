@@ -33,7 +33,8 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::post('/create_user', 'UsersController@create_user');
 	
 	Route::get('/company', 'CompanyController@company');
-	
+	Route::post('/create_company', 'CompanyController@create_company');
+		
 	Route::get('/rpt_active_cases', 'ReportsController@rpt_active_cases');
 	Route::get('/rpt_1stdegree_endangered/{userid}', 'ReportsController@rpt_1stdegree_endangered');
 	Route::get('/rpt_2nddegree_endangered/{userid}', 'ReportsController@rpt_2nddegree_endangered');
