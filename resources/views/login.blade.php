@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Flair Solutions</title>
+  <title>{{env('SOFTWARE_NAME')}}</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,13 +21,14 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="index2.html"><b>Flair</b>Solutions</a>
+    <a href="#"><img src="/dist/img/logo.png"></a><br/>
+    {{env('SOFTWARE_NAME')}}
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
       @if($status==false)
-      <p class="login-box-msg">{{$message}}</p>
+      <p class="login-box-msg text-danger">{{$message}}</p>
       @else
       <p class="login-box-msg">Sign in to start your session</p>
       @endif

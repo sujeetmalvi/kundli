@@ -1,6 +1,5 @@
 @extends('maintemplate')
 @section('content')
-
   <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -8,9 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>1st Degree Endangered</h1>
-          </div>
-          <div class="col-sm-6">
+            <h1>Company</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -19,39 +16,33 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <div class="row">
+        <div class="row" id="list">
           <div class="col-12">
             <div class="card">
-              <!-- <div class="card-header">
-                <h3 class="card-title">User Locations</h3>
-              </div> -->
+              <div class="card-header">
+                <h3 class="card-title">Companies List </h3>
+                <!-- <button class="btn btn-sm btn-success" style="float:right;" id='add'><i class="fas fa-plus"></i> New</button> -->
+              </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="example2" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Near By Person</th>
-                    <th>Distance(in Meter)</th>
-                    <th>Datetime</th>
+                    <th>Company</th>
+                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                @foreach($data as $d)
+                  @foreach($data as $d)
                   <tr>
-                    <td>{{$d->user2name}}</td>
-                    <td>{{$d->distance}}</td>
-                    <td>{{$d->created_at}}</td>
+                    <td>{{$d->company_name}}</td>
+                    <td>
+                      <!-- <a class="btn btn-info btn-sm edit" data-id="{{$d->id}}" href="#"><i class="fas fa-pencil-alt"></i></a>
+                      <a class="btn btn-danger btn-sm delete" data-id="{{$d->id}}" href=""><i class="fas fa-trash"></i></a> -->
+                    </td>
                   </tr>
-                @endforeach
+                  @endforeach
                   </tbody>
-                  <!--<tfoot>
-                  <tr>
-                    <th>User Name</th>
-                    <th>Near By Person</th>
-                    <th>Distance(in Meter)</th>
-                    <th>Datetime</th>
-                  </tr>
-                  </tfoot>-->
                 </table>
               </div>
               <!-- /.card-body -->
@@ -59,7 +50,8 @@
             <!-- /.card -->
           </div>
           <!-- /.col -->
-        </div>
+        </div> <!-- list row -->
+
         <!-- /.row -->
       </div>
       <!-- /.container-fluid -->
@@ -67,6 +59,9 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+
+
   <script>
   $(function () {
     $("#example2").DataTable({
@@ -77,5 +72,9 @@
      // "order": [[ 3, "desc" ]],
     });
   });
+
 </script>
 @endsection
+
+
+

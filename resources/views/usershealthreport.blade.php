@@ -1,4 +1,6 @@
-@include('headsection');
+@extends('maintemplate')
+@section('content')
+
   <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -76,4 +78,4 @@
     });
   });
 </script>
-  @include('footersection');
+@endsection
