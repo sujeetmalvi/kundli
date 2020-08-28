@@ -102,7 +102,9 @@
                       <select class="form-control custom-select" id="company_id" name="company_id" required="">
                         <option selected disabled>Select one</option>
                         @foreach($company as $comp)
-                        <option value="{{$comp->id}}">{{$comp->company_name}}</option>
+                        @if(Auth::user()->company_id==$comp->id)
+                        <option value="{{$comp->id}}" selected="selected">{{$comp->company_name}}</option>
+                        @endif
                         @endforeach
                       </select>
                     </div>
