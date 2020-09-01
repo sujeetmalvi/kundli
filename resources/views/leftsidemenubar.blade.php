@@ -58,7 +58,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/rpt_defaulters" class="nav-link">
+                <a href="#rpt_defaulters" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Defaulters</p>
                 </a>
@@ -81,12 +81,14 @@
                   <p>Users</p>
                 </a>
               </li>
+              @if(Auth::user()->role_id==1)
               <li class="nav-item">
                 <a href="/company" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Company</p>
                 </a>
               </li>
+              @endif
             </ul>
           </li>
         </ul>

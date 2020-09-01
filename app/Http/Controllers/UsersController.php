@@ -9,6 +9,7 @@ use App\UsersLocations;
 use App\UsersBluetoothToken;
 use App\UsersHealth;
 use App\Company;
+use Mail;
 
 class UsersController extends Controller
 {
@@ -24,7 +25,7 @@ class UsersController extends Controller
         ]);
         $credentials = request(['email', 'password']);
         if(Auth::attempt($credentials)){
-            if(Auth::user()->role_id!=2){
+            if(Auth::user()->role_id!=2 && Auth::user()->role_id!=1){
                 return view('login',['status'=>false,'message' => 'Unauthorized Access']);    
             }
             return redirect()->action('UsersController@dashboard');
@@ -65,6 +66,9 @@ class UsersController extends Controller
             'created_at'=> now()->setTimezone('UTC')
         ]);        
         if($id){
+            
+            $this->sendEmail('BLE Account Creation', 'http://35.189.78.216/login',$email,$password, $email, $emailFrom = "");
+
             return response()->json(['status'=>true,'message' => 'New User Created Successfully']);
         }else{
             return response()->json(['status'=>false,'message' => 'Error']);

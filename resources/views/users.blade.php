@@ -101,11 +101,17 @@
                       <label for="company_id">Company *</label>
                       <select class="form-control custom-select" id="company_id" name="company_id" required="">
                         <option selected disabled>Select one</option>
-                        @foreach($company as $comp)
-                        @if(Auth::user()->company_id==$comp->id)
-                        <option value="{{$comp->id}}" selected="selected">{{$comp->company_name}}</option>
-                        @endif
-                        @endforeach
+                        @if(Auth::user()->role_id==1)
+                          @foreach($company as $comp)
+                            <option value="{{$comp->id}}">{{$comp->company_name}}</option>
+                          @endforeach
+                        @else
+                          @foreach($company as $comp)
+                            @if(Auth::user()->company_id==$comp->id)
+                              <option value="{{$comp->id}}" selected="selected">{{$comp->company_name}}</option>
+                            @endif
+                          @endforeach
+                        @endif  
                       </select>
                     </div>
 
