@@ -42,7 +42,7 @@
                     <td>{{$d->name}}</td>
                     <td><a href='/rpt_1stdegree_endangered/{{$d->id}}' target="_blank">Click here</a></td>
                     <td><a href='/rpt_2nddegree_endangered/{{$d->id}}' target="_blank">Click here</a></td>
-                    <td>{{date('d-M-Y',strtotime($d->infected_reportedon))}}</td>
+                    <td>{{date('d-M-Y',strtotime($d->created_at))}}</td>
                   </tr>
                 @endforeach
                   </tbody>

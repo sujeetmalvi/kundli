@@ -1,6 +1,5 @@
 @extends('maintemplate')
 @section('content')
-
   <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -8,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>1st Degree Endangered</h1>
+            <h1>Breaches</h1>
           </div>
           <div class="col-sm-6">
           </div>
@@ -30,17 +29,15 @@
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                    <th>Near By Person</th>
-                    <th>Distance(in Meter)</th>
-                    <th>Datetime</th>
+                    <th>Name</th>
+                    <th>Voilation count</th>
                   </tr>
                   </thead>
                   <tbody>
                 @foreach($data as $d)
                   <tr>
-                    <td>{{$d->user2name}}</td>
-                    <td>{{$d->distance}}</td>
-                    <td>{{$d->created_at}}</td>
+                    <td>{{$d->name}}</td>
+                    <td>{{$d->voilation}}</td>
                   </tr>
                 @endforeach
                   </tbody>
@@ -74,7 +71,7 @@
       "autoWidth": false,
       "paging": true,
       "ordering": true,
-      "order": [[ 2, "desc" ]],
+      "order": [[ 1, "desc" ]],
     });
   });
 </script>

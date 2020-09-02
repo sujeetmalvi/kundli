@@ -26,20 +26,19 @@ Route::get('login', [ 'as' => 'login', 'uses' => 'UsersController@login']);
 Route::group(['middleware' => 'auth'], function() {
 	Route::get('/dashboard', 'UsersController@dashboard');
 	Route::get('/userslocations', 'UsersController@userslocations');
-	Route::get('/usersbtdistances', 'UsersController@usersbtdistances');
-	Route::get('/usersinfectedreport', 'UsersController@usersinfectedreport');
-	Route::get('/usershealthreport', 'UsersController@usershealthreport');
 	Route::get('/users', 'UsersController@users');
 	Route::post('/create_user', 'UsersController@create_user');
-	
 	Route::get('/company', 'CompanyController@company');
 	Route::post('/create_company', 'CompanyController@create_company');
 		
+	// REPORTS 
 	Route::get('/rpt_active_cases', 'ReportsController@rpt_active_cases');
 	Route::get('/rpt_1stdegree_endangered/{userid}', 'ReportsController@rpt_1stdegree_endangered');
 	Route::get('/rpt_2nddegree_endangered/{userid}', 'ReportsController@rpt_2nddegree_endangered');
 	Route::get('/rpt_defaulters', 'ReportsController@rpt_defaulters');
-
+	Route::get('/rpt_breaches', 'ReportsController@rpt_breaches');	
+	Route::get('/rpt_usershealth', 'ReportsController@rpt_usershealth');
+	Route::get('/rpt_usersbtdistances', 'ReportsController@rpt_usersbtdistances');
 });
 
 

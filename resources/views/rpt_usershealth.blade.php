@@ -39,8 +39,8 @@
                 @foreach($data as $d)
                   <tr>
                     <td>{{$d->name}}</td>
-                    <td>{{$d->condition_type}}</td>
-                    <td>{{date('d-M-Y',strtotime($d->created_at))}} {{$d->created_at}}</td>
+                    <td>{{Config::get('constants.CONDITION_TYPES.'.$d->condition_type)}}</td>
+                    <td>{{date('d-M-Y h:i A',strtotime($d->created_at))}}</td>
                   </tr>
                 @endforeach
                   </tbody>
@@ -74,7 +74,7 @@
       "autoWidth": false,
       "paging": true,
       "ordering": true,
-      "order": [[ 1, "desc" ]],
+      "order": [[ 2, "desc" ]],
     });
   });
 </script>

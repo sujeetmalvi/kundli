@@ -29,17 +29,17 @@
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                    <th>Near By Person</th>
-                    <th>Distance(in Meter)</th>
-                    <th>Datetime</th>
+                    <th>Name</th>
+                    <th>Voilation count</th>
+                    <th>Date</th>
                   </tr>
                   </thead>
                   <tbody>
                 @foreach($data as $d)
                   <tr>
-                    <td>{{$d->user2name}}</td>
-                    <td>{{$d->distance}}</td>
-                    <td>{{$d->created_at}}</td>
+                    <td>{{$d->name}}</td>
+                    <td>{{$d->voilation}}</td>
+                    <td>{{$d->ddate}}</td>
                   </tr>
                 @endforeach
                   </tbody>
@@ -73,7 +73,7 @@
       "autoWidth": false,
       "paging": true,
       "ordering": true,
-     // "order": [[ 3, "desc" ]],
+      "order": [[ 2, "desc" ]],
     });
   });
 </script>

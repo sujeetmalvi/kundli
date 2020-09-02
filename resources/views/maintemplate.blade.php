@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Flair-Solutions</title>
+  <title>{{env('SOFTWARE_NAME')}}</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -86,7 +86,7 @@
   @yield('content')
 
   <footer class="main-footer">
-    <strong>Copyright &copy; <?php echo date('Y');?> <a href="#">Flair-solutions</a>.</strong>
+    <strong>Copyright &copy; <?php echo date('Y');?> <a href="#">{{env('SOFTWARE_NAME')}}</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 1.0

@@ -29,28 +29,34 @@
                 Locations
             </a>
           </li> -->
-          <li class="nav-item">
-            <a href="/usersbtdistances" class="nav-link">
+          <!-- <li class="nav-item">
+            <a href="/rpt_usersbtdistances" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               Volations
             </a>
-          </li>
-          <li class="nav-item">
+          </li> -->
+          <!-- <li class="nav-item">
             <a href="/usersinfectedreport" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               Infected Users
             </a>
-          </li>
+          </li> -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Reports
                 <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">3</span>
+                <span class="badge badge-info right">4</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/rpt_usersbtdistances" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Volations</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="/rpt_active_cases" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -58,9 +64,21 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#rpt_defaulters" class="nav-link">
+                <a href="/rpt_defaulters" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Defaulters</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/rpt_breaches" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Breaches</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/rpt_usershealth" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Health</p>
                 </a>
               </li>
             </ul>
