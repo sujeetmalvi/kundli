@@ -9,7 +9,7 @@ use App\UsersLocations;
 use App\UsersBluetoothToken;
 use App\UsersHealth;
 use App\Company;
-use Mail;
+use Config;
 
 class UsersController extends Controller
 {
@@ -35,7 +35,21 @@ class UsersController extends Controller
     }
 
     public function dashboard(){
-        return view('dashboard');
+        $data = UsersHealth::select('condition_type',\DB::raw('count(condition_type) as usercount'))
+                ->groupBy('condition_type')
+                ->orderBy('condition_type','ASC')
+                ->get(); 
+                //  ->dd();
+                //  $sql = str_replace_array('?', $data->getBindings(), $data->toSql());
+                // return dd($sql);   
+                $ddata_arr = array();
+            foreach($data as $d){
+                $ddata_arr[Config::get('constants.CONDITION_TYPES.'.$d->condition_type)] = $d->usercount;
+                //$ddata_arr[$d->condition_type] = $d->usercount;
+            }    
+            
+            //print_r($ddata_arr); die();
+        return view('dashboard',['data'=>$ddata_arr]);
     }
 
     public function users(){

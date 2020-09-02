@@ -27,34 +27,16 @@
         <div class="row">
           <div class="col-lg-3 col-6">
             <!-- small card -->
-            <div class="small-box bg-info">
+            <div class="small-box bg-danger ">
               <div class="inner">
-                <h3>150</h3>
-
-                <p>New Orders</p>
+                <h3>{{$data['Infected']}}</h3>
+                <p>Infected</p>
               </div>
               <div class="icon">
-                <i class="fas fa-shopping-cart"></i>
+                <i class="fas fa-users"></i>
               </div>
               <a href="#" class="small-box-footer">
-                More info <i class="fas fa-arrow-circle-right"></i>
-              </a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small card -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                <p>Bounce Rate</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-              <a href="#" class="small-box-footer">
-                More info <i class="fas fa-arrow-circle-right"></i>
+                &nbsp;<!-- More info <i class="fas fa-arrow-circle-right"></i> -->
               </a>
             </div>
           </div>
@@ -63,32 +45,46 @@
             <!-- small card -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
-
-                <p>User Registrations</p>
+                <h3>{{$data['Symptoms']}}</h3>
+                <p>Symptoms</p>
               </div>
               <div class="icon">
-                <i class="fas fa-user-plus"></i>
+                <i class="fas fa-users"></i>
               </div>
               <a href="#" class="small-box-footer">
-                More info <i class="fas fa-arrow-circle-right"></i>
+                &nbsp;<!-- More info <i class="fas fa-arrow-circle-right"></i> -->
               </a>
             </div>
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small card -->
-            <div class="small-box bg-danger">
+            <div class="small-box bg-info">
               <div class="inner">
-                <h3>65</h3>
-
-                <p>Unique Visitors</p>
+                <h3>{{$data['Well']}}</h3>
+                <p>Well</p>
               </div>
               <div class="icon">
-                <i class="fas fa-chart-pie"></i>
+                <i class="fas fa-users"></i>
               </div>
               <a href="#" class="small-box-footer">
-                More info <i class="fas fa-arrow-circle-right"></i>
+                &nbsp;<!-- More info <i class="fas fa-arrow-circle-right"></i> -->
+              </a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>{{$data['Not Infected']}}</h3>
+                <p>Not Infected</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                &nbsp;<!-- More info <i class="fas fa-arrow-circle-right"></i> -->
               </a>
             </div>
           </div>
