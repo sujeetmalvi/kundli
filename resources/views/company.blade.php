@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Company</h1>
+            <h1>City</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -20,7 +20,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Companies List </h3>
+                <h3 class="card-title">Cities List </h3>
                 <button class="btn btn-sm btn-success" style="float:right;" id='add'><i class="fas fa-plus"></i> New</button>
               </div>
               <!-- /.card-header -->
@@ -28,7 +28,7 @@
                 <table id="example2" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Company</th>
+                    <th>City</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -56,12 +56,12 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Create User</h3>
+                <h3 class="card-title">Create City</h3>
                 <button class="btn btn-sm btn-success" style="float:right;" id='showlist'><i class="fas fa-plus"></i> List</button>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form action="/create_company" name="create_company" id="create_company" action="javascript:;" method="post">
+                <form action="{{ url('/create_company') }}" name="create_company" id="create_company" action="javascript:;" method="post">
                   {{ csrf_field() }}
                     <div class="form-group">
                       <label for="company_name">Name *</label>
@@ -141,7 +141,7 @@ $("#create_company").submit(function(event) {
         class: 'bg-success', 
         title: 'User created',
         subtitle: 'Success',
-        body: 'New Company Created Successfully.'
+        body: 'New City Created Successfully.'
       });
     $('#create_company').trigger("reset");
   });

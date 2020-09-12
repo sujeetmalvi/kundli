@@ -38,7 +38,7 @@
                   <tr>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Company</th>
+                    <th>City</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -73,7 +73,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form action="/create_user" name="create_user" id="create_user" action="javascript:;" method="post">
+                <form action="{{ url('/create_user') }}" name="create_user" id="create_user" action="javascript:;" method="post">
                   {{ csrf_field() }}
                     <div class="form-group">
                       <label for="name">Name *</label>
@@ -98,7 +98,7 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="company_id">Company *</label>
+                      <label for="company_id">City *</label>
                       <select class="form-control custom-select" id="company_id" name="company_id" required="">
                         <option selected disabled>Select one</option>
                         @if(Auth::user()->role_id==1)
@@ -152,7 +152,7 @@
                   <input type="text" id="inputEmail" class="form-control" value="" required="">
                 </div>
                 <div class="form-group">
-                  <label for="inputCompany">Company *</label>
+                  <label for="inputCompany">City *</label>
                   <select class="form-control custom-select" required="">
                     <option selected disabled>Select one</option>
                     <option>On Hold</option>

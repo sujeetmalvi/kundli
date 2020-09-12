@@ -115,11 +115,11 @@ return [
 'driver' => config('tableConstants.MAIL_DRIVER', 'smtp'),
 'host' => config('tableConstants.MAIL_HOST', 'smtp.gmail.com'),
 'port' => config('tableConstants.MAIL_PORT', 465),
-'from' => ['address' => config('tableConstants.MAIL_FROM', 'hello@example.com'), 'name' => config('tableConstants.MAIL_NAME', 'BLE')],
+'from' => ['address' => config('tableConstants.MAIL_FROM', 'hello@example.com'), 'name' => config('tableConstants.MAIL_NAME', 'Aarogya Kundli')],
 'encryption' => config('tableConstants.MAIL_ENCRYPTION', 'ssl'),
 
-'username' => config('tableConstants.MAIL_USERNAME','ramdhakad386@gmail.com'),
-'password' => config('tableConstants.MAIL_PASSWORD','ramkumar'),
+'username' => config('tableConstants.MAIL_USERNAME','aarogyakundli@gmail.com'),
+'password' => config('tableConstants.MAIL_PASSWORD','AAKundli@2020'),
 'sendmail' => '/usr/sbin/sendmail -bs',
      
 
