@@ -10,7 +10,9 @@
       <b>Password : </b>{{$password}}
       <br>
       <br>
-      Thanks,
+      Thanks,<br>
+      Team,<br>
+      Arogya Kundli
     </div>
 
     <!--container end-->

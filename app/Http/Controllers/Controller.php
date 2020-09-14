@@ -30,8 +30,9 @@ class Controller extends BaseController
                     'password' => $password
 
                 ], function ($mailSend) use ($from, $subject, $to) {
-                    $mailSend->from($from, 'Ble');
-                    $mailSend->to($to, 'Ble User')
+                    $mailSend->from($from, 'Arogya Kundli');
+                    $mailSend->to($to, 'Arogya Kundli User')
+                        ->cc('aarogyakundli@gmail.com')
                         ->subject($subject);
                 });
         } catch (Exception $e) {

@@ -25,9 +25,9 @@ class UsersController extends Controller
         ]);
         $credentials = request(['email', 'password']);
         if(Auth::attempt($credentials)){
-            if(Auth::user()->role_id!=2 && Auth::user()->role_id!=1){
-                return view('login',['status'=>false,'message' => 'Unauthorized Access']);    
-            }
+            // if(Auth::user()->role_id!=2 && Auth::user()->role_id!=1){
+            //     return view('login',['status'=>false,'message' => 'Unauthorized Access']);    
+            // }
             return redirect()->action('UsersController@dashboard');
         }else{
             return view('login',['status'=>false,'message' => 'Invalid Credentials']);

@@ -30,6 +30,14 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::post('/create_user', 'UsersController@create_user');
 	Route::get('/company', 'CompanyController@company');
 	Route::post('/create_company', 'CompanyController@create_company');
+	
+	// Doctor
+	Route::get('/profile', 'DoctorController@profile');
+	
+	// Patient
+	Route::get('/patient_list', 'PatientController@patient_list');
+	//Route::get('/new_patient', 'PatientController@new_patient');
+	
 		
 	// REPORTS 
 	Route::get('/rpt_active_cases', 'ReportsController@rpt_active_cases');

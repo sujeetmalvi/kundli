@@ -77,11 +77,11 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
   <!-- Navbar -->
-   @include('topmenubar');
+   @include('topmenubar')
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  @include('leftsidemenubar');
+  @include('leftsidemenubar')
 
   @yield('content')
 

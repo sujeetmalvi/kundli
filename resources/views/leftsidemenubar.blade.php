@@ -67,18 +67,69 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Masters
+                Patient Info
                 <i class="fas fa-angle-left right"></i>
                 <span class="badge badge-info right">2</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
+                <a href="{{ url('/patient_list') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Patient List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#{{ url('/new_patient') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>New Patient</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Personal Info
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">2</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('/profile') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Profile</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('/profile') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Clinic's</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          @if(Auth::user()->role_id==1 || Auth::user()->role_id==2)
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Masters
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">2</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              @if(Auth::user()->role_id==2)
+              <li class="nav-item">
                 <a href="{{ url('/users') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Users</p>
                 </a>
               </li>
+              @endif
               @if(Auth::user()->role_id==1)
               <li class="nav-item">
                 <a href="{{ url('/company') }}" class="nav-link">
@@ -89,6 +140,7 @@
               @endif
             </ul>
           </li>
+          @endif
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
