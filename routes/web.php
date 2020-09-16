@@ -24,10 +24,14 @@ Route::post('/process_login', 'UsersController@process_login');
 Route::get('login', [ 'as' => 'login', 'uses' => 'UsersController@login']);
 
 Route::group(['middleware' => 'auth'], function() {
-	Route::get('/dashboard', 'UsersController@dashboard');
-	Route::get('/userslocations', 'UsersController@userslocations');
+    // Dashboard
+	Route::get('/dashboard', 'DashboardController@home');
+
+    // Users
 	Route::get('/users', 'UsersController@users');
 	Route::post('/create_user', 'UsersController@create_user');
+
+    // Company / City
 	Route::get('/company', 'CompanyController@company');
 	Route::post('/create_company', 'CompanyController@create_company');
 	
@@ -36,7 +40,8 @@ Route::group(['middleware' => 'auth'], function() {
 	
 	// Patient
 	Route::get('/patient_list', 'PatientController@patient_list');
-	//Route::get('/new_patient', 'PatientController@new_patient');
+	Route::get('/new_patient', 'PatientController@new_patient');
+	Route::post('/save_patient','PatientController@save_patient');
 	
 		
 	// REPORTS 

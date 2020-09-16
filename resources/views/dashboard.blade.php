@@ -29,8 +29,8 @@
             <!-- small card -->
             <div class="small-box bg-danger ">
               <div class="inner">
-                <h3>{{$data['Infected']}}</h3>
-                <p>Infected</p>
+                <h3>10</h3>
+                <p>Patients</p>
               </div>
               <div class="icon">
                 <i class="fas fa-users"></i>
@@ -45,8 +45,8 @@
             <!-- small card -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>{{$data['Symptoms']}}</h3>
-                <p>Symptoms</p>
+                <h3>40</h3>
+                <p>Doctors</p>
               </div>
               <div class="icon">
                 <i class="fas fa-users"></i>
@@ -61,8 +61,8 @@
             <!-- small card -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>{{$data['Well']}}</h3>
-                <p>Well</p>
+                <h3>3</h3>
+                <p>Cities</p>
               </div>
               <div class="icon">
                 <i class="fas fa-users"></i>
@@ -77,8 +77,8 @@
             <!-- small card -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>{{$data['Not Infected']}}</h3>
-                <p>Not Infected</p>
+                <h3>100</h3>
+                <p>Users</p>
               </div>
               <div class="icon">
                 <i class="fas fa-users"></i>

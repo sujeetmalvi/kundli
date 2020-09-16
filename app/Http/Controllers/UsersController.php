@@ -5,9 +5,6 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\User;
-use App\UsersLocations;
-use App\UsersBluetoothToken;
-use App\UsersHealth;
 use App\Company;
 use Config;
 
@@ -28,28 +25,10 @@ class UsersController extends Controller
             // if(Auth::user()->role_id!=2 && Auth::user()->role_id!=1){
             //     return view('login',['status'=>false,'message' => 'Unauthorized Access']);    
             // }
-            return redirect()->action('UsersController@dashboard');
+            return redirect()->action('DashboardController@home');
         }else{
             return view('login',['status'=>false,'message' => 'Invalid Credentials']);
         }
-    }
-
-    public function dashboard(){
-        $data = UsersHealth::select('condition_type',\DB::raw('count(condition_type) as usercount'))
-                ->groupBy('condition_type')
-                ->orderBy('condition_type','ASC')
-                ->get(); 
-                //  ->dd();
-                //  $sql = str_replace_array('?', $data->getBindings(), $data->toSql());
-                // return dd($sql);   
-                $ddata_arr = array();
-            foreach($data as $d){
-                $ddata_arr[Config::get('constants.CONDITION_TYPES.'.$d->condition_type)] = $d->usercount;
-                //$ddata_arr[$d->condition_type] = $d->usercount;
-            }    
-            
-            //print_r($ddata_arr); die();
-        return view('dashboard',['data'=>$ddata_arr]);
     }
 
     public function users(){

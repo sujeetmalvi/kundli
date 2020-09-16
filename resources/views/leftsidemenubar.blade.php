@@ -80,7 +80,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#{{ url('/new_patient') }}" class="nav-link">
+                <a href="{{ url('/new_patient') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>New Patient</p>
                 </a>
