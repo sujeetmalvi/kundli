@@ -5,9 +5,6 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\User;
-use App\UsersLocations;
-use App\UsersBluetoothToken;
-use App\UsersHealth;
 use App\Company;
 
 class CompanyController extends Controller
