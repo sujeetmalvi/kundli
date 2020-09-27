@@ -39,9 +39,16 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/profile', 'DoctorController@profile');
 	
 	// Patient
-	Route::get('/patient_list', 'PatientController@patient_list');
+	Route::get('/patient_list/{type?}', 'PatientController@patient_list');
 	Route::get('/new_patient', 'PatientController@new_patient');
 	Route::post('/save_patient','PatientController@save_patient');
+	Route::get('/delete_patient/{id}', 'PatientController@delete_patient');
+	
+	
+	// QUESTIONAIR
+	Route::post('/questionair','QuestionairController@questionair');
+	
+	
 	
 		
 	// REPORTS 

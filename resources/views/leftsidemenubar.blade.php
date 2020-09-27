@@ -67,16 +67,22 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Patient Info
+                Patient
                 <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">2</span>
+                <span class="badge badge-info right">4</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('/patient_list') }}" class="nav-link">
+                <a href="{{ url('/patient_list/alloted') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Patient List</p>
+                  <p>Aloted Patient(s)</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('/patient_list/examin') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Examin Patient(s)</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -100,18 +106,18 @@
               <li class="nav-item">
                 <a href="{{ url('/profile') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Profile</p>
+                  <p>Personal Profile</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ url('/profile') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Clinic's</p>
+                  <p>Clinic Details</p>
                 </a>
               </li>
             </ul>
           </li>
-          @if(Auth::user()->role_id==1 || Auth::user()->role_id==2)
+          @if(Auth::user()->role_id==1)
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -122,7 +128,7 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              @if(Auth::user()->role_id==2)
+              @if(Auth::user()->role_id==1)
               <li class="nav-item">
                 <a href="{{ url('/users') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

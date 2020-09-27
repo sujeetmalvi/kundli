@@ -180,9 +180,9 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+@endsection
 
-
-
+@section('javascript')
   <script>
   $(function () {
     $("#example2").DataTable({
@@ -258,7 +258,6 @@ $("#create_user").submit(function(event) {
     $('#result').text('failed');
   });
 });
-
 </script>
 @endsection
 

@@ -29,7 +29,7 @@
             <!-- small card -->
             <div class="small-box bg-danger ">
               <div class="inner">
-                <h3>10</h3>
+                <h3>{{ $patient_count->total }}</h3>
                 <p>Patients</p>
               </div>
               <div class="icon">
@@ -46,7 +46,7 @@
             <div class="small-box bg-warning">
               <div class="inner">
                 <h3>40</h3>
-                <p>Doctors</p>
+                <p>title</p>
               </div>
               <div class="icon">
                 <i class="fas fa-users"></i>
@@ -62,7 +62,7 @@
             <div class="small-box bg-info">
               <div class="inner">
                 <h3>3</h3>
-                <p>Cities</p>
+                <p>title</p>
               </div>
               <div class="icon">
                 <i class="fas fa-users"></i>
@@ -78,7 +78,7 @@
             <div class="small-box bg-success">
               <div class="inner">
                 <h3>100</h3>
-                <p>Users</p>
+                <p>title</p>
               </div>
               <div class="icon">
                 <i class="fas fa-users"></i>
