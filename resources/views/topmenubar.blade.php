@@ -5,24 +5,27 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Home</a>
+        <a href="#" class="nav-link" style="font-size: 25px;padding: 0px;margin: 0 auto;font-weight: bold;color: #000;">ArogyaKundli</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
+      <!--<li class="nav-item d-none d-sm-inline-block">-->
+      <!--  <a href="#" class="nav-link">Home</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item d-none d-sm-inline-block">-->
+      <!--  <a href="#" class="nav-link">Contact</a>-->
+      <!--</li>-->
     </ul>
 
     <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
+    <!--<form class="form-inline ml-3">-->
+    <!--  <div class="input-group input-group-sm">-->
+    <!--    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">-->
+    <!--    <div class="input-group-append">-->
+    <!--      <button class="btn btn-navbar" type="submit">-->
+    <!--        <i class="fas fa-search"></i>-->
+    <!--      </button>-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--</form>-->
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -113,17 +116,25 @@
       </li> -->
       <li class="nav-item dropdown user-menu">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-          <img src="{{ url('/dist/img/user2-160x160.jpg') }}" class="user-image img-circle elevation-2" alt="User Image">
-          <span class="d-none d-md-inline">{{ucfirst(Auth::user()->name)}}</span>
+        @if(Auth::user()->role_id==1)
+            <img src="{{ url('/dist/img/admin.jpg') }}" class="user-image img-circle elevation-2" alt="User Image">
+        @else
+            <img src="{{ url('/dist/img/santoshpatel.jpg') }}" class="user-image img-circle elevation-2" alt="User Image">    
+        @endif
+          <span class="d-none d-md-inline">Dr. {{ucwords(Auth::user()->name)}}</span>
         </a>
         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <!-- User image -->
-          <li class="user-header bg-primary">
-            <img src="{{ url('/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+          <li class="user-header" style="background:#094025;color: #fff;">
+        @if(Auth::user()->role_id==1)
+            <img src="{{ url('/dist/img/admin.jpg') }}" class="img-circle elevation-2" alt="User Image">
+        @else
+            <img src="{{ url('/dist/img/santoshpatel.jpg') }}" class="img-circle elevation-2" alt="User Image">    
+        @endif
 
             <p>
-              {{ucfirst(Auth::user()->name)}}
-              <small>Member since Nov. 2012</small>
+              Dr. {{ucwords(Auth::user()->name)}}
+              <!--<small>Member since Nov. 2012</small>-->
             </p>
           </li>
           <!-- Menu Body -->

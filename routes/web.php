@@ -43,22 +43,31 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/new_patient', 'PatientController@new_patient');
 	Route::post('/save_patient','PatientController@save_patient');
 	Route::get('/delete_patient/{id}', 'PatientController@delete_patient');
+	Route::get('/view_patient/{id}', 'PatientController@view_patient');
 	
 	
 	// QUESTIONAIR
 	Route::post('/questionair','QuestionairController@questionair');
 	
+	// QUESTION ANSWERS
+	Route::get('/questionans_list','QuestionairController@questionans_list');
+	Route::get('/new_questionans','QuestionairController@new_questionans');
+	Route::post('/save_questionans','QuestionairController@save_questionans');
 	
 	
-		
+
 	// REPORTS 
-	Route::get('/rpt_active_cases', 'ReportsController@rpt_active_cases');
-	Route::get('/rpt_1stdegree_endangered/{userid}', 'ReportsController@rpt_1stdegree_endangered');
-	Route::get('/rpt_2nddegree_endangered/{userid}', 'ReportsController@rpt_2nddegree_endangered');
-	Route::get('/rpt_defaulters', 'ReportsController@rpt_defaulters');
-	Route::get('/rpt_breaches', 'ReportsController@rpt_breaches');	
-	Route::get('/rpt_usershealth', 'ReportsController@rpt_usershealth');
-	Route::get('/rpt_usersbtdistances', 'ReportsController@rpt_usersbtdistances');
+	Route::get('/pdf_prescription/{id}', 'PatientController@pdf_prescription');
+	
+// 	Route::get('/rpt_active_cases', 'ReportsController@rpt_active_cases');
+// 	Route::get('/rpt_1stdegree_endangered/{userid}', 'ReportsController@rpt_1stdegree_endangered');
+// 	Route::get('/rpt_2nddegree_endangered/{userid}', 'ReportsController@rpt_2nddegree_endangered');
+// 	Route::get('/rpt_defaulters', 'ReportsController@rpt_defaulters');
+// 	Route::get('/rpt_breaches', 'ReportsController@rpt_breaches');	
+// 	Route::get('/rpt_usershealth', 'ReportsController@rpt_usershealth');
+// 	Route::get('/rpt_usersbtdistances', 'ReportsController@rpt_usersbtdistances');
+	
+	
 });
 
 

@@ -24,7 +24,7 @@ class PatientController extends Controller
             }
             
         }else{
-            $data = Patient::join('users','users.id','=','patient.user_id')->select('patient.name','patient.prakrati','patient.phone','patient.email','patient.city','users.name as doctor')->get();
+            $data = Patient::join('users','users.id','=','patient.user_id')->select('patient.id','patient.name','patient.prakrati','patient.phone','patient.email','patient.city','users.name as doctor')->get();
         }
         
         return view('patient.patient',['view'=>'list','data'=>$data,'company'=>array()]);
@@ -92,6 +92,16 @@ class PatientController extends Controller
         }
     }
     
+    public function view_patient($id){
+        $user_id = Auth::user()->id;
+        $data = Patient::join('users','users.id','=','patient.user_id')->leftjoin('prescription','prescription.patient_id','=','patient.id')
+        ->select('patient.id','patient.name','patient.prakrati','patient.phone','patient.email','patient.city','patient.address','patient.state','patient.created_at',
+                    'users.name as doctorname','users.email as doctoremail',
+                    'prescription.diagnose','prescription.prescription','prescription.precautions','prescription.suggestions'
+                    )->first();
+        return view('patient.patient_prescription',['data'=>$data]);
+    }
+    
     public function delete_patient($id){
         $status = Common_helper::delete_records('patient','id',$id);
         if($status){
@@ -99,8 +109,27 @@ class PatientController extends Controller
         }else{
             return redirect('/patient_list')->with(['status' => true,'message' => 'Error']);
         }
+    }
+    
+    public function prescription_html(){
+        
+        $html = "";
+        return $html;
+    }
+    
+    public function pdf_prescription($id)
+    {
+     $pdf = \App::make('dompdf.wrapper');
+     $data = Patient::join('users','users.id','=','patient.user_id')->leftjoin('prescription','prescription.patient_id','=','patient.id')
+        ->select('patient.id','patient.name','patient.prakrati','patient.phone','patient.email','patient.city','patient.address','patient.state','patient.created_at',
+                    'users.name as doctorname','users.email as doctoremail',
+                    'prescription.diagnose','prescription.prescription','prescription.precautions','prescription.suggestions'
+                    )->first();
+        return view('patient.patient_prescription_print',['data'=>$data]);
         
         
+     $pdf->loadHTML(view('patient.patient_prescription_print',['data'=>$data]));
+     return $pdf->stream();
     }
 
 }

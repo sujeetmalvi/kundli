@@ -3,20 +3,20 @@
 
 @section('content')
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper" style="background: #17a2b8;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Profile</h1>
+          <div class="col-sm-6" style="color:#ffffff;">
+            <h1>{{ strtoupper('Doctor Profile') }}</h1>
           </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">User Profile</li>
-            </ol>
-          </div>
+          <!--<div class="col-sm-6">-->
+          <!--  <ol class="breadcrumb float-sm-right">-->
+          <!--    <li class="breadcrumb-item"><a href="#">Home</a></li>-->
+          <!--    <li class="breadcrumb-item active">User Profile</li>-->
+          <!--  </ol>-->
+          <!--</div>-->
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -28,38 +28,38 @@
           <div class="col-md-3">
 
             <!-- Profile Image -->
-            <div class="card card-primary card-outline">
-              <div class="card-body box-profile">
+            <div class="card card-dark card-outline">
+              <div class="card-body box-profile" style="background:#343a40;color:#ffffff;">
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
-                       src="{{ url('/dist/img/user2-160x160.jpg') }}"
+                       src="{{ url('/dist/img/santoshpatel.jpg') }}"
                        alt="User profile picture">
                 </div>
 
-                <h3 class="profile-username text-center">{{ $data->name }}</h3>
+                <h3 class="profile-username text-center">Dr. {{ ucwords($data->name) }}</h3>
 
                 <p class="text-muted text-center">Doctor</p>
 
                 <ul class="list-group list-group-unbordered mb-3">
-                  <li class="list-group-item">
-                    <b>Followers</b> <a class="float-right">1,322</a>
+                  <li class="list-group-item" style="background:transparent;">
+                    <b>Patient Today</b> <a class="float-right">1,322</a>
                   </li>
-                  <li class="list-group-item">
-                    <b>Following</b> <a class="float-right">543</a>
+                  <li class="list-group-item" style="background:transparent;">
+                    <b>Pending</b> <a class="float-right">543</a>
                   </li>
-                  <li class="list-group-item">
-                    <b>Friends</b> <a class="float-right">13,287</a>
+                  <li class="list-group-item" style="background:transparent;">
+                    <b>Total Patient </b> <a class="float-right">13,287</a>
                   </li>
                 </ul>
 
-                <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                <!--<a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>-->
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
 
             <!-- About Me Box -->
-            <div class="card card-primary">
+            <div class="card card-primary" style='display:none;'>
               <div class="card-header">
                 <h3 class="card-title">About Me</h3>
               </div>
@@ -104,14 +104,15 @@
             <div class="card">
               <div class="card-header p-2">
                 <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
+                  <!--<li class="nav-item"><a class="nav-link" href="#activity" data-toggle="tab">Activity</a></li>-->
+                  <!--<li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li>-->
+                  <li class="nav-item"><a class="nav-link active" href="#personal" data-toggle="tab">Personal Details</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#clinic" data-toggle="tab">Clinic Details</a></li>
                 </ul>
               </div><!-- /.card-header -->
               <div class="card-body">
                 <div class="tab-content">
-                  <div class="active tab-pane" id="activity">
+                  <div class="tab-pane" id="activity">
                     <!-- Post -->
                     <div class="post">
                       <div class="user-block">
@@ -273,26 +274,57 @@
                   </div>
                   <!-- /.tab-pane -->
 
-                  <div class="tab-pane" id="settings">
+                  <div class="active tab-pane" id="personal">
                     <form class="form-horizontal">
                       <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Name</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputName" placeholder="Name" value='{{ $data->name }}'>
+                        <div class="col-sm-4">
+                          <input type="text"  class="form-control" id="name" name="name" placeholder="Name" value='{{ $data->name }}'>
+                        </div>
+                        <label for="Gender" class="col-sm-2 col-form-label">Gender</label>
+                        <div class="col-sm-4">
+                          <input type="radio" class="" id="gender" name="gender" value='M'> Male
+                          <input type="radio" class="" id="gender" name="gender" value='M'> Female
                         </div>
                       </div>
                       <div class="form-group row">
+                        <label for="aadharno" class="col-sm-2 col-form-label">Aadhar No.</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="aadharno" name="aadharno" placeholder="Aadhar Number" value=''>
+                        </div>
+                        <label for="dob" class="col-sm-2 col-form-label">DOB</label>
+                        <div class="col-sm-4">
+                          <input type="date" class="form-control" id="dob" name="dob" placeholder="dob" value=''>
+                        </div>
+                        </div>
+                      <div class="form-group row">
+                        <label for="mobile" class="col-sm-2 col-form-label">Mobile</label>
+                        <div class="col-sm-4">
+                          <input type="number" class="form-control" id="mobile" name="mobile" placeholder="mobile" value='' onfocus='this.blur();'>
+                        </div>
                         <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-4">
                           <input type="email" class="form-control" id="inputEmail" placeholder="Email" value='{{ $data->email }}' onfocus='this.blur();'>
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="inputName2" class="col-sm-2 col-form-label">City</label>
+                        <label for="state" class="col-sm-2 col-form-label">State</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="state" name="state" placeholder="State" value=''>
+                        </div>
+                        <label for="city" class="col-sm-2 col-form-label">City</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="city" name="city" placeholder="City" value='{{ $data->city_name }}'>
+                        </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                        <label for="RegNo" class="col-sm-2 col-form-label">Registration No.</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputName2" placeholder="Name" value='{{ $data->city_name }}'>
+                          <input type="text" class="form-control" id="RegNo" name="RegNo" placeholder="Registration No">
                         </div>
                       </div>
+                        
                       <div class="form-group row">
                         <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
                         <div class="col-sm-10">
@@ -306,14 +338,103 @@
                         </div>
                       </div>
                       <div class="form-group row">
-                        <div class="offset-sm-2 col-sm-10">
-                          <div class="checkbox">
-                            <label>
-                              <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                            </label>
-                          </div>
+                        <label for="degree" class="col-sm-2 col-form-label">Degree</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="degree" name="degree" placeholder="Degree">
                         </div>
                       </div>
+                      <!--<div class="form-group row">-->
+                      <!--  <div class="offset-sm-2 col-sm-10">-->
+                      <!--    <div class="checkbox">-->
+                      <!--      <label>-->
+                      <!--        <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>-->
+                      <!--      </label>-->
+                      <!--    </div>-->
+                      <!--  </div>-->
+                      <!--</div>-->
+                      <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-10">
+                          <button type="submit" class="btn btn-danger">Submit</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="tab-pane" id="clinic">
+                    <form class="form-horizontal">
+                      <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-4">
+                          <input type="text"  class="form-control" id="name" name="name" placeholder="Clinic Name" value=''>
+                        </div>
+                        <label for="Gender" class="col-sm-2 col-form-label">No. of Staff</label>
+                        <div class="col-sm-4">
+                          <input type="number" class="form-control" id="noofstaff" name="noofstaff" value='1'>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="clinictype" class="col-sm-2 col-form-label">Clinic Type</label>
+                        <div class="col-sm-4">
+                          <select name="clinictype" id="clinictype" class="form-control">
+                              <option value="self">Self</option>
+                              <option value="ak">Arogya Kundli</option>
+                          </select>
+                        </div>
+                        <label for="noofbeds" class="col-sm-2 col-form-label">No. of Beds</label>
+                        <div class="col-sm-4">
+                          <input type="number" class="form-control" id="noofbeds" name="noofbeds" placeholder="no. of beds" value=''>
+                        </div>
+                        </div>
+                      <div class="form-group row">
+                        <label for="mobile" class="col-sm-2 col-form-label">Mobile</label>
+                        <div class="col-sm-4">
+                          <input type="number" class="form-control" id="mobile" name="mobile" placeholder="mobile" value='' >
+                        </div>
+                        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-4">
+                          <input type="email" class="form-control" id="inputEmail" placeholder="Email" value=''>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="state" class="col-sm-2 col-form-label">State</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="state" name="state" placeholder="State" value=''>
+                        </div>
+                        <label for="city" class="col-sm-2 col-form-label">City</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="city" name="city" placeholder="City" value=''>
+                        </div>
+                        </div>
+                      <div class="form-group row">
+                        <label for="address" class="col-sm-2 col-form-label">Address</label>
+                        <div class="col-sm-10">
+                          <textarea class="form-control" id="address" name="address" placeholder="address"></textarea>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="wardno" class="col-sm-2 col-form-label">Ward No.</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="wardno" name="wardno" placeholder="ward no.">
+                        </div>
+                        <label for="Pincode" class="col-sm-2 col-form-label">Pincode</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="Pincode" name="Pincode" placeholder="Pincode">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="landmark" class="col-sm-2 col-form-label">Landmark</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="landmark" name="landmark" placeholder="landmark">
+                        </div>
+                      </div>
+                      <!--<div class="form-group row">-->
+                      <!--  <div class="offset-sm-2 col-sm-10">-->
+                      <!--    <div class="checkbox">-->
+                      <!--      <label>-->
+                      <!--        <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>-->
+                      <!--      </label>-->
+                      <!--    </div>-->
+                      <!--  </div>-->
+                      <!--</div>-->
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
                           <button type="submit" class="btn btn-danger">Submit</button>
@@ -336,7 +457,11 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
+<style>
+    .nav-pills .nav-link.active{
+        background:#c82333;
+    }
+</style>
 @endsection
 
 

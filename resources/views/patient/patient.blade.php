@@ -3,13 +3,13 @@
 
 @section('content')
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper" style="background: #ffc107;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Patient`s</h1>
+            <h1>PATIENT'S DETAIL</h1>
           </div>
           <!-- <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -60,6 +60,7 @@
                     <td>{{$d->email}}</td>
                     <td>{{$d->city}}</td>
                     <td>
+                      <a class="btn btn-warning btn-sm" href="{{ url('/view_patient/'.$d->id) }}"><i class="fas fa-eye"></i></a>    
                       <!-- <a class="btn btn-info btn-sm edit" data-id="{{$d->id}}" href="#"><i class="fas fa-pencil-alt"></i></a>-->
                       <a class="btn btn-danger btn-sm delete" href="{{ url('/delete_patient/'.$d->id) }}"><i class="fas fa-trash"></i></a>
                     </td>
@@ -87,14 +88,14 @@
         {{ $message }}
     @endif
     <!-- Main content  form-->
-    <section class="content">
+    <section class="content" >
         <form action="{{ url('/save_patient') }}" method='post' />
         {{ csrf_field() }}
       <div class="row">
         <div class="col-md-6">
-          <div class="card card-primary">
+          <div class="card card-danger">
             <div class="card-header">
-              <h3 class="card-title">General Info</h3>
+              <h3 class="card-title">PATIENT'S PRESONAL INFORMATION</h3>
                 <!--<div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                   <i class="fas fa-minus"></i></button>
@@ -103,11 +104,11 @@
             <div class="card-body">
                 <div class="form-group">
                     <div class='row'>
-                        <div class='col-md-4'>
+                        <div class='col-md-6'>
                             <label for="name">Patient Name*</label>
                             <input type="text" id="name" name='name' class="form-control" required='required'>
                         </div>
-                        <div class='col-md-4'>
+                        <div class='col-md-6'>
                             <label for="agegroup">Age Group*</label>
                             <select class="form-control custom-select" id='agegroup' name='agegroup' required='required'>
                                 <option selected disabled>Select one</option>
@@ -250,9 +251,9 @@
           <!-- /.card -->
         </div>
         <div class="col-md-6">
-            <div class="card card-secondary">
+            <div class="card card-danger">
                 <div class="card-header">
-                  <h3 class="card-title">Prescription</h3>
+                  <h3 class="card-title">PRESCRIPTION</h3>
                 </div>
                 <div class="card-body">
                     <div class="form-group">
@@ -351,31 +352,34 @@
         var gender = $("#gender").val();
         var agegroup = $("#agegroup").val();
         var token = $('input[name=_token]').val();
-        var html = "";
+        var html = 'Please wait questions are loading...';
+        $('#questionair').html(html);
         debugger;
-        $.post("{{ url('/questionair')}}", {agegroup: agegroup,gender:gender,_token:token}, function(result,status){
-            debugger;
-            var res = JSON.parse(result);
-            if(res.status==true){
-                //console.log(res.data);
-                var n=1;
-                $.each(res.data,function(index,row){
-                    html +="<label for='question'>Q" + n +". " + row.question_english + "</label>";    
-                    $.each(row.answers,function(i,r){
-                        html+="<label class='container'>" + r.answer_english + "<input type='radio' name='answer"+n+"'><span class='checkmark'></span></label>";          
+            $.post("{{ url('/questionair')}}", {agegroup: agegroup,gender:gender,_token:token}, function(result,status){
+                debugger;
+                html = '';
+                var res = JSON.parse(result);
+                if(res.status==true){
+                    //console.log(res.data);
+                    var n=1;
+                    $.each(res.data,function(index,row){
+                        html +="<label for='question'>Q" + n +". " + row.question_english + "</label>";    
+                        $.each(row.answers,function(i,r){
+                            html+="<label class='container'>" + r.answer_english + "<input type='radio' name='answer"+n+"'><span class='checkmark'></span></label>";          
+                        });
+                        n++;
                     });
-                    n++;
-                });
-                console.log(html);
+                    console.log(html);
+                }else{
+                    var html = 'Please select Age-Group and Gender.';
+                }
                 $('#questionair').html(html);
-              
-            }
-        });
-        
+            });
+
         <!-- 
         
         -->
-        
+
     }
  
     
